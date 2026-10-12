@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Usuarios - API REST Express</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Hoja de Estilos Externa -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Encabezado -->
+    <header>
+      <h1>👥 Sistema de Gestión de Usuarios</h1>
+      <p>CRUD completo conectado mediante fetch() a Express API (Node.js)</p>
+    </header>
+
+    <!-- Alerta dinámica de retroalimentación -->
+    <div id="mensajeAlerta" role="alert"></div>
+
+    <!-- Sección Formulario -->
+    <section class="card">
+      <h2 id="formTitulo" class="card-title">➕ Registrar Nuevo Usuario</h2>
+      
+      <form id="formularioUsuario" autocomplete="off">
+        <!-- Campo oculto para almacenar el ID cuando estamos editando -->
+        <input type="hidden" id="usuarioId" value="">
+
+        <div class="form-group">
+          <label for="nombre">Nombre Completo</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            name="nombre" 
+            placeholder="Ej. Sofía Martínez" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Ej. sofia@example.com" 
+            required
+          >
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btnSubmit" class="btn btn-primary">Guardar</button>
+          <button type="button" id="btnCancelar" class="btn btn-secondary" style="display: none;">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Sección Lista de Usuarios -->
+    <section class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h2 class="card-title" style="margin-bottom: 0;">📋 Usuarios Registrados</h2>
+        <span id="contadorUsuarios" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">0 usuarios</span>
+      </div>
+
+      <ul id="listaUsuarios" class="user-list">
+        <!-- Los usuarios cargados mediante fetch() se renderizarán aquí -->
+      </ul>
+
+      <!-- Mensaje cuando la lista esté vacía -->
+      <div id="sinUsuarios" class="empty-state" style="display: none;">
+        <h3>No hay usuarios registrados</h3>
+        <p>Utiliza el formulario superior para añadir el primer usuario.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Lógica JavaScript Externa -->
+  <script src="app.js"></script>
+</body>
+</html>
